@@ -4,20 +4,20 @@
     <title>SINTEF - Medical Image Analysis</title>
     
     <!-- Favicons SINTEF -->
-    <link rel="apple-touch-icon" sizes="180x180" href="../static/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../static/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../static/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon-32x32.png') }}">
 
     <!--  Bootstrap 5 CSS -->
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="../static/css/custom_style.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" crossorigin="anonymous">
+    <link href="{{ url_for('static', filename='css/custom_style.css') }}" rel="stylesheet">
 
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-config" content="/browserconfig.xml?v=xQdRx5jj52">
     <meta name="theme-color" content="#ffffff">
 
     <!-- Bootstrap 5 JS -->
-    <script src="../static/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}" crossorigin="anonymous"></script>
 
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/e3a5ec69a5.js" crossorigin="anonymous"></script>
@@ -28,7 +28,7 @@
       <nav class="container text-center d-flex justify-content-center">
           <div class="row container-fluid">
               <div class="col d-flex justify-content-center align-items-center">
-                <a href="{{ url_for('main') }}"><img src="/static/imgs/sintef_logo.svg" style="height: 3em; padding-right: 1.0em"></a>
+                <a href="{{ url_for('main') }}"><img src="{{ url_for('static', filename='imgs/sintef_logo.svg') }}" style="height: 3em; padding-right: 1.0em"></a>
                 <a style="text-decoration: none" href="{{ url_for('main') }}"><h1 class="" style="color: white">SINTEF - Medical Image Analysis</h1></a>
               </div>
           </div>
