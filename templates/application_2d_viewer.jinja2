@@ -1,0 +1,40 @@
+{% extends 'application_template.jinja2' %}
+
+{% block application_content %}
+    <div class="my-5 pt-5 container">
+      <div class="row justify-content-center align-content-center">
+        <div class="col-sm-6">
+          <form action="{{ url_for('process') }}" method="post" enctype="multipart/form-data">
+            <!-- HTML5 file upload selector-->
+            <div class="row justify-content-center mb-3">
+                <div class="col">
+                    <input type="file" name="file"/>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <button type="reset" class="btn btn-secondary" style="width: 100%">Clear</button>
+                </div>
+                <div class="col-6">
+                    <button type="submit" class="btn btn-primary" style="width: 100%">Submit</button>
+                </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    {% if result is defined %}
+        <div class="row">
+            <div class="col">
+                <img src="{{ [result.path, result.file]|join('/') }}" class="img-fluid" alt="image_result">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button class="btn-primary" onclick="{{ url_for('downloadResult', dir_name=result.path, file_name=result.file) }}">Download</button>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}

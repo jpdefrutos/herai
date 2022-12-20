@@ -57,6 +57,9 @@ def process():
 
             # return "Processing finished successfully!"
 
+@app.route("/download/<string:dir_name>/<string:file_name>")
+def download_results(dir_name, file_name):
+    return send_from_directory(dir_name, file_name)
 
 """
 # @app.route("/process/<string:app_name>", methods=['GET', 'POST'])
