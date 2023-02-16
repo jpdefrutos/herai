@@ -6,6 +6,7 @@ apps:
     description: Liver and vessel segmentation on CT.
     repository: github.com/andreped/livermask
     page: livermask.html
+    template: application_3d_viewer
 
   - id: 2
     name: Raidionics
@@ -14,3 +15,4 @@ apps:
     description: Segmentation and analysis of menigioma on brain MRI images.
     repository: github.com/dbouget/raidionics
     page: raidionics.html
+    template: application_3d_viewer

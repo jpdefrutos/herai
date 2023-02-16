@@ -30,7 +30,7 @@ http.createServer(function (req, res) {
 
     // process uploaded data
     execSync(
-      'source ./venv/bin/activate && livermask --input ' + newpath + ' --output ' + tmp_dir + '/prediction --cpu --verbose',
+      'source ../livermask/venv/bin/activate && livermask --input ' + newpath + ' --output ' + tmp_dir + '/prediction --cpu --verbose',
       { encoding: 'utf-8', stdio: 'inherit' }
     );
 

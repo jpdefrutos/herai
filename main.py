@@ -19,9 +19,10 @@ def main():
     return render_template("catalogue.jinja2", title="Catalogue", **ctx)   # By default, Flask expects your templates in a templates/ directory
 
 
-@app.route("/application/<string:app_name>")
-def application(app_name):
-    return render_template("{}.jinja2".format(app_name.lower()), **{'app_name': app_name.capitalize()})
+@app.route("/application/<string:app_name>/<string:template>")
+def application(app_name, template):
+    # return render_template("{}.jinja2".format(app_name.lower()), **{'app_name': app_name.capitalize()})
+    return process(app_name, template)
 
 
 @app.route("/")
@@ -34,14 +35,24 @@ def downloader(dir_name, name):
     return send_from_directory(dir_name, name)
 
 
-@app.route("/process", methods=["GET", "POST"])
-def process():
+@app.route("/process/<string:app_name>/<string:template>", methods=["GET", "POST"])
+def process(app_name, template):
+    template_parameters = {
+        'show_spin': str(False),
+        'download_dir': '',
+        'download_file_name': '',
+        'app_name': app_name
+    }   # These are the parameters if the request.method == 'GET', i.e., when the user first opens the app
+
     if request.method == "POST":
         # update UI that it is processing
         # update_processing_UI()
 
         # create temporary directory - will automatically delete when exiting context manager
         with tempfile.TemporaryDirectory() as dir_name:
+            template_parameters['show_spin'] = str(True)
+            template_parameters['download_dir'] = dir_name
+            template_parameters['download_file_name'] = "prediction-livermask.nii"
             # upload
             f = request.files["file"]
             curr_path = os.path.join(dir_name, secure_filename(f.filename))
@@ -56,6 +67,7 @@ def process():
             return send_from_directory(dir_name, "prediction-livermask.nii")
 
             # return "Processing finished successfully!"
+    return render_template(template+".jinja2", title="Processing", **template_parameters)
 
 @app.route("/download/<string:dir_name>/<string:file_name>")
 def download_results(dir_name, file_name):

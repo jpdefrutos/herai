@@ -1,10 +1,10 @@
-{% extends 'application_template.jinja2' %}
+{% extends "application_template.jinja2" %}
 
-{% block application_content %}
+{% block app_content %}
     <div class="my-5 pt-5 container">
       <div class="row justify-content-center align-content-center">
         <div class="col-sm-6">
-          <form action="{{ url_for('process') }}" method="post" enctype="multipart/form-data">
+          <form action="{{ url_for('process', app_name=app_name|lower, template="application_3d_viewer") }}" method="post" enctype="multipart/form-data">
             <!-- HTML5 file upload selector-->
             <div class="row justify-content-center mb-3">
                 <div class="col">
@@ -31,8 +31,8 @@
                 <input id="nifti3dslider" type="range" min="1" max="100" value="50" class="slider">
             </div>
         </div>
-        <script src="static/js/nifti-reader.js"></script>
-        <script src="static/js/nifti-reader-min.js"></script>
+        <script src="../static/js/nifti-reader.js"></script>
+        <script src="../static/js/nifti-reader-min.js"></script>
     {% endif %}
 
 {% endblock %}

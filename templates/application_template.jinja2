@@ -16,48 +16,48 @@
          </div>
     {% endif %}
 
-    {% if url_repository is defined %}
+    {% if repository is defined %}
         <div class="my-5 pt-5 row text-center">
             <p>
               Don't forget to star! <i class="fa-solid fa-star" style="color: #ffc107"></i>
               <br>
-              <i class="fa-brands fa-github" href="{{ url_repository }}"></i>
-              <a href="{{ url_repository }}" class="link-primary">"{{ url_repository }}"</a>
+              <i class="fa-brands fa-github" href="{{ repository }}"></i>
+              <a href="{{ repository }}" class="link-primary">"{{ repository }}"</a>
             </p>
         </div>
     {% endif %}
 
-    {% if publication_reference is defined %}
-        <div class="my-5 pt-5 row text-center">
-            <ul>
-                {% for entry in publication_reference %}
-                    <li>
-                        <span class="authors">
-                            {{ entry.persons['author']|author_list }}.
-                        </span>
-                        <span class="title">
-                            {% set url = entry|main_url %}
-                            {% if url %}
-                            <a href="{{ url|escape }}">{{ entry|title }}</a>.
-                            {% else %}
-                            {{ entry|title }}.
-                            {% endif %}
-                        </span>
-                        <span class="venuetype">{{ entry|venue_type -}}</span><span class="venue">{{ entry|venue -}}</span>,
-                        <span class="date">
-                            {{ entry.fields['month'] }}
-                            {{ entry.fields['year'] }}.
-                        </span>
-
-                        <span class="links">
-                        {% for type, url in (entry|extra_urls).items() %}
-                            <a href="{{ url|escape }}">{{ type|escape }}</a>
-                        {% endfor %}
-                        </span>
-                    </li>
-
-                {% endfor %}
-            </ul>
-        </div>
-    {% endif %}
+{#    {% if publication_reference is defined %}#}
+{#        <div class="my-5 pt-5 row text-center">#}
+{#            <ul>#}
+{#                {% for entry in publication_reference %}#}
+{#                    <li>#}
+{#                        <span class="authors">#}
+{#                            {{ entry.persons['author']|author_list }}.#}
+{#                        </span>#}
+{#                        <span class="title">#}
+{#                            {% set url = entry|main_url %}#}
+{#                            {% if url %}#}
+{#                            <a href="{{ url|escape }}">{{ entry|title }}</a>.#}
+{#                            {% else %}#}
+{#                            {{ entry|title }}.#}
+{#                            {% endif %}#}
+{#                        </span>#}
+{#                        <span class="venuetype">{{ entry|venue_type -}}</span><span class="venue">{{ entry|venue -}}</span>,#}
+{#                        <span class="date">#}
+{#                            {{ entry.fields['month'] }}#}
+{#                            {{ entry.fields['year'] }}.#}
+{#                        </span>#}
+{##}
+{#                        <span class="links">#}
+{#                        {% for type, url in (entry|extra_urls).items() %}#}
+{#                            <a href="{{ url|escape }}">{{ type|escape }}</a>#}
+{#                        {% endfor %}#}
+{#                        </span>#}
+{#                    </li>#}
+{##}
+{#                {% endfor %}#}
+{#            </ul>#}
+{#        </div>#}
+{#    {% endif %}#}
 {% endblock %}
