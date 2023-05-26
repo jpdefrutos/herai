@@ -10,13 +10,18 @@ import subprocess as sp
 app = Flask("SINTEF MIA Catalogue")
 APP_DICT = dict()
 
-
 @app.route("/")
 def main():
+    return render_template("catalogue.jinja2", title="Catalogue", **load_app_dict())   # By default, Flask expects your templates in a templates/ directory
+
+
+def load_app_dict():
     ctx = load_catalogue()
     for app in ctx['apps']:
+        if 'huggingface' in app.keys():
+            app['template'] = 'huggingface_app'
         APP_DICT[app['name']] = app
-    return render_template("catalogue.jinja2", title="Catalogue", **ctx)   # By default, Flask expects your templates in a templates/ directory
+    return ctx
 
 
 @app.route("/application/<string:app_name>/<string:template>")
@@ -37,11 +42,16 @@ def downloader(dir_name, name):
 
 @app.route("/process/<string:app_name>/<string:template>", methods=["GET", "POST"])
 def process(app_name, template):
+    if not len(APP_DICT):
+        # In case we are reloading another page than the catalogue!
+        load_app_dict()
+
     template_parameters = {
         'show_spin': str(False),
         'download_dir': '',
         'download_file_name': '',
-        'app_name': app_name
+        'app_name': app_name,
+        'app_info': APP_DICT[app_name]
     }   # These are the parameters if the request.method == 'GET', i.e., when the user first opens the app
 
     if request.method == "POST":

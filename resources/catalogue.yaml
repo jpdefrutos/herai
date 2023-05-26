@@ -6,7 +6,7 @@ apps:
     description: Liver and vessel segmentation on CT.
     repository: github.com/andreped/livermask
     page: livermask.html
-    template: application_3d_viewer
+    huggingface: https://andreped-livermask.hf.space
 
   - id: 2
     name: Raidionics

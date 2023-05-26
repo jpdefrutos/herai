@@ -1,0 +1,9 @@
+{% extends "application_template.jinja2" %}
+
+{% block app_content %}
+    <div class="my-5 pt-5 row text-center">
+        <gradio-app src={{ app_info.huggingface }} theme_mode="system"></gradio-app>
+    </div>
+
+
+{% endblock %}
