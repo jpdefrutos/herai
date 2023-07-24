@@ -6,7 +6,8 @@ apps:
     description: Liver and vessel segmentation on CT.
     repository: github.com/andreped/livermask
     page: livermask.html
-
+    huggingface: https://andreped-livermask.hf.space
+    
   - id: 2
     name: Raidionics
     author: David Bouget
