@@ -21,4 +21,4 @@ RUN pip install tqdm==4.62.2
 
 ENV PYTHONBUFFERED 1
 
-ENTRYPOINT["python", "./main.py"]
+ENTRYPOINT ["python", "./main.py"]
