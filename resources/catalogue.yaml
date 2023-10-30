@@ -16,3 +16,13 @@ apps:
     repository: github.com/dbouget/raidionics
     page: raidionics.html
     template: application_3d_viewer
+    huggingface: https://dbouget-raidionics.hf.space
+
+  - id: 3
+    name: DDMR
+    author: Javier Pérez de Frutos
+    email: javier.perezdefrutos@sintef.no
+    description: Brain MRI and liver CT registration.
+    repository: github.com/jpdefrutos/ddmr
+    page: ddmr.html
+    huggingface: https://andreped-ddmr.hf.space
