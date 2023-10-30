@@ -25,4 +25,4 @@ COPY . WORKDIR
 
 ENV PYTHONBUFFERED 1
 
-ENTRYPOINT ["python", "./main.py"]
+ENTRYPOINT ["python", "${WORKDIR}/main.py"]
