@@ -5,6 +5,8 @@ MAINTAINER Javier Perez de Frutos <javier.perezdefrutos@sintef.no>
 # set language, format and stuff
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 
+WORKDIR /usr/src/website
+
 RUN apt-get update
 RUN apt-get install git -y
 RUN pip install --upgrade pip
@@ -18,6 +20,8 @@ RUN pip install Jinja2==3.1.2
 RUN pip install pytest==7.2.0
 RUN pip install PyYAML==6.0
 RUN pip install tqdm==4.62.2
+
+COPY . WORKDIR
 
 ENV PYTHONBUFFERED 1
 
